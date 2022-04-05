@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import millify from 'millify'
 import { Link } from 'react-router-dom'
-import { Card, Row, Column } from 'antd'
+import { Card, Row, Col } from 'antd'
 
 import { useGetCryptosQuery } from '../services/cryptoApi'
 
@@ -22,6 +22,12 @@ const Cryptocurrencies = () => {
               >
                 <p>
                   Price: {millify(cur.price)}
+                </p>
+                <p>
+                  Market Cap: {millify(cur.marketCap)}
+                </p>
+                <p>
+                  Daily Change: {millify(cur.change)}
                 </p>
               </Card>
             </Link>
