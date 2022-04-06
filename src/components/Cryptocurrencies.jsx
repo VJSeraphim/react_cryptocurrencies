@@ -12,7 +12,7 @@ const Cryptocurrencies = () => {
   return (
     <>
       <Row gutters={[32, 32]} className="crypto-card-container">
-        {cryptos.map((cur) => (
+        {cryptos?.map((cur) => (
           <Col xs={24} sm={12} lg={6} className="crypto-card" key={cur.id}>
             <Link to={`/crypto/${cur.id}`}>
               <Card 
