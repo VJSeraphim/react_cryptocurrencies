@@ -10,7 +10,7 @@ import Loader from './Loader'
 const { Text, Title } = Typography
 const { Option } = Select
 
-const demoImage = ''
+const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News'
 
 const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState('CryptoCurrency')
@@ -20,7 +20,7 @@ const News = ({ simplified }) => {
     count : simplified ? 6 : 12
   })
 
-  const { data: cryptosList, isFetching } = useGetCryptosQuery(count)
+  const { data } = useGetCryptosQuery(100)
 
   if(!cryptoNews?.value) return <Loader />
 
@@ -36,10 +36,10 @@ const News = ({ simplified }) => {
             onChange={(value) => setNewsCategory(value)}
             filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
           >
-            <Option value="Cryptocurrenct">
+            <Option value="Cryptocurrency">
               Cryptocurrency
             </Option>
-            {data?.data?.coins.map((cur) => {
+            {data?.data?.coins?.map((cur) => {
               <Option value={cur.name}>
                 {cur.name}
               </Option>
@@ -68,7 +68,7 @@ const News = ({ simplified }) => {
                 </p>
                 <div className="provider-container">
                   <div>
-                    <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoimage} alt="news" />
+                    <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="news" />
                     <Text className="provider-name">
                       {news.provider[0]?.name}
                     </Text>

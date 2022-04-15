@@ -16,7 +16,7 @@ const Cryptocurrencies = ({ simplified }) => {
     setCryptos(cryptosList?.data?.coins)
 
     const filteredData = cryptosList?.data?.coins.filter(
-      (coin) => coin.name.toLowerCase.includes(searchTerm.toLowerCase())
+      (coin) => coin.name.toLowerCase().includes(searchTerm.toLowerCase().includes(searchTerm))
     )
 
     setCryptos(filteredData)
