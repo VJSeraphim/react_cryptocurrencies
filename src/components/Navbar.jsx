@@ -7,7 +7,7 @@ import icon from '../assets/cryptocurrency.png'
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true)
-  const [screenSize, setScreenSize] = useState(null)
+  const [screenSize, setScreenSize] = useState(undefined)
 
   useEffect(() => {
     const handleResize = () => {

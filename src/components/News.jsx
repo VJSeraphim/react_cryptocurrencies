@@ -13,7 +13,7 @@ const { Option } = Select
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News'
 
 const News = ({ simplified }) => {
-  const [newsCategory, setNewsCategory] = useState('CryptoCurrency')
+  const [newsCategory, setNewsCategory] = useState('Cryptocurrency')
 
   const { data: cryptoNews } = useGetCryptoNewsQuery({ 
     newsCategory, 
@@ -52,7 +52,7 @@ const News = ({ simplified }) => {
           <Card hoverable className="news-card">
             <a href={news.url} target="_blank" rel="noreferrer">
               <div className="news-image-container">
-                <Title className="news-title" level="4">
+                <Title className="news-title" level={4}>
                   {news.name}
                 </Title>
                 <img 
@@ -61,8 +61,8 @@ const News = ({ simplified }) => {
                   alt="news"
                 />
                 <p>
-                  {news.description > 100 
-                    ? `${news.description.substring(0, 100)} ... `
+                  {news.description.length > 100 
+                    ? `${news.description.substring(0, 100)}...`
                     : news.description
                   }
                 </p>

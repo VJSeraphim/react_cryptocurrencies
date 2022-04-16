@@ -9,7 +9,7 @@ import Loader from './Loader'
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count)
-  const [cryptos, setCryptos] = useState([])
+  const [cryptos, setCryptos] = useState()
   const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
@@ -34,8 +34,8 @@ const Cryptocurrencies = ({ simplified }) => {
       )}
       <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((cur) => (
-          <Col xs={24} sm={12} lg={6} className="crypto-card" key={cur.id}>
-            <Link to={`/crypto/${cur.id}`}>
+          <Col xs={24} sm={12} lg={6} className="crypto-card" key={cur.uuid}>
+            <Link to={`/crypto/${cur.uuid}`} key={cur.uuid}>
               <Card 
                 title={`${cur.rank}. ${cur.name}`} 
                 extra={<img className="crypto-image" src={cur.iconUrl} />}
@@ -48,7 +48,7 @@ const Cryptocurrencies = ({ simplified }) => {
                   Market Cap: {millify(cur.marketCap)}
                 </p>
                 <p>
-                  Daily Change: {millify(cur.change)}
+                  Daily Change: {cur.change}%
                 </p>
               </Card>
             </Link>
